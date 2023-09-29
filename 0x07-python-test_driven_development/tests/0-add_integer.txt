@@ -1,4 +1,4 @@
-'0-add_integer' module
+#0-add_integer' module
 =============================
 
 Uit test for the function  'add_integer' that returns the sum of two integer
