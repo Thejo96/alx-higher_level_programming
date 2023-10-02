@@ -6,13 +6,17 @@ import sys
 
 def init_board(n):
     """Initialize an `n`x`n` sized chessboard with 0's."""
-    board = [[' ' for _ in range(n)] for _ in range(n)]
-    return board
+    board = []
+    [board.append([]) for i in range(n)]
+    [row.append(' ') for i in range(n) for row in board]
+    return (board)
 
 
 def board_deepcopy(board):
     """Return a deepcopy of a chessboard."""
-    return [row[:] for row in board]
+    if isinstance(board, list):
+        return list(map(board_deepcopy, board))
+    return (board)
 
 
 def get_solution(board):
@@ -22,11 +26,13 @@ def get_solution(board):
         for c in range(len(board)):
             if board[r][c] == "Q":
                 solution.append([r, c])
-    return solution
+                break
+    return (solution)
 
 
 def xout(board, row, col):
-    """X spots on a chessboard."""
+    """X spots on a chessboard.
+    """
     # X out all forward spots
     for c in range(col + 1, len(board)):
         board[row][c] = "x"
@@ -51,7 +57,7 @@ def xout(board, row, col):
     for r in range(row - 1, -1, -1):
         if c < 0:
             break
-        board[r][c] = "x"
+        board[r][c]
         c -= 1
     # X out all spots diagonally up to the right
     c = col + 1
@@ -70,10 +76,11 @@ def xout(board, row, col):
 
 
 def recursive_solve(board, row, queens, solutions):
-    """Recursively solve an N-queens puzzle."""
+    """Recursively solve an N-queens puzzle.
+    """
     if queens == len(board):
         solutions.append(get_solution(board))
-        return solutions
+        return (solutions)
 
     for c in range(len(board)):
         if board[row][c] == " ":
@@ -83,14 +90,14 @@ def recursive_solve(board, row, queens, solutions):
             solutions = recursive_solve(tmp_board, row + 1,
                                         queens + 1, solutions)
 
-    return solutions
+    return (solutions)
 
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
         print("Usage: nqueens N")
         sys.exit(1)
-    if not sys.argv[1].isdigit():
+    if sys.argv[1].isdigit() is False:
         print("N must be a number")
         sys.exit(1)
     if int(sys.argv[1]) < 4:
