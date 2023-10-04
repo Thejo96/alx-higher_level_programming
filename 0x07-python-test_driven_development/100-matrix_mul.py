@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+
 """ matrix_mul function
 """
 
