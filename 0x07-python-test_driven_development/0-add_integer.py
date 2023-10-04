@@ -1,14 +1,43 @@
 #!/usr/bin/python3
-
-"""0-add_integer
-The function "add_integer"  returns the sum of two integers.
+""" add_integer function
 """
+
+'''
+File_name: 0-add_integer.py
+Created: 1st of June, 2023
+Auth: David James Taiye (Official0mega)
+Size: undefined
+Project: 0x07-python-test_driven_development
+Status: submitted.
+'''
+
+
 def add_integer(a, b=98):
-    """adds two integers function body"""
+    """
+    # Write a function that adds 2 integers.
+    # a and b must be integers or floats, otherwise raise a...
+    ....TypeError exception with the message a must be an integer...
+    ....or b must be an integer.
+    # VARIABLE(" "):
+    # add_integer(int): Integers addition
+    # Return: an integer.. the addition of a and b
+    """
+    """Adds two integers.
 
-    if type(a) not in [int, float]:
+    Args:
+        a (int or float): The first number
+        b (int or float, optional): The second number. Defaults to 98.
+
+    Return:
+        int: The addition of a and b.
+
+    Raises:
+        TypeError: if a or b is not an integer or float.
+
+    """
+    if not isinstance(a, (int, float)):
         raise TypeError("a must be an integer")
-    if type(b) not in [int, float]:
+    elif not isinstance(b, (int, float)):
         raise TypeError("b must be an integer")
-
-    return int(a) + int(b)
+    else:
+        return int(a) + int(b)
