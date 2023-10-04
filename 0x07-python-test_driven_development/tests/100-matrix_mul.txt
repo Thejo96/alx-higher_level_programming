@@ -1,4 +1,3 @@
-'''
 # Import the required function
 >>> from importlib import import_module
 >>> matrix_mul = import_module('100-matrix_mul').matrix_mul
@@ -107,5 +106,3 @@ m_a and m_b can't be multiplied
 ... except ValueError as ex:
 ...     print(ex.args[0])
 m_a and m_b can't be multiplied
-
-'''
