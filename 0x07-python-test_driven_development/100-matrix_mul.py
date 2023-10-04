@@ -1,34 +1,37 @@
 #!/usr/bin/python3
-"""
-matrix_mul function
-"""
 
 def matrix_mul(m_a, m_b):
     """
     Multiply two matrices.
+
     Args:
-        m_a (list): First matrix as a list of lists.
-        m_b (list): Second matrix as a list of lists.
+        m_a (list): The first matrix as a list of lists.
+        m_b (list): The second matrix as a list of lists.
+
     Returns:
         list: The result of the matrix multiplication.
-    Raises:
-        ValueError: If matrices are not properly formatted for multiplication.
-    """
 
+    Raises:
+        TypeError: If m_a or m_b is not a list of lists of integers or floats.
+        ValueError: If m_a or m_b is empty or if matrices can't be multiplied.
+    """
     if not isinstance(m_a, list) or not isinstance(m_b, list):
-        raise ValueError("Both matrices must be lists of lists")
+        raise TypeError("m_a must be a list and m_b must be a list")
 
     if not all(isinstance(row, list) for row in m_a) or not all(isinstance(row, list) for row in m_b):
-        raise ValueError("Both matrices must be lists of lists")
+        raise TypeError("m_a must be a list of lists and m_b must be a list of lists")
 
-    if len(m_a) == 0 or len(m_b) == 0 or any(len(row) == 0 for row in m_a) or any(len(row) == 0 for row in m_b):
-        raise ValueError("Both matrices must be non-empty")
+    if not m_a or not m_b:
+        raise ValueError("m_a can't be empty and m_b can't be empty")
 
-    num_columns_a = len(m_a[0])
-    num_rows_b = len(m_b)
+    if not all(isinstance(num, (int, float)) for row in m_a for num in row) or not all(isinstance(num, (int, float)) for row in m_b for num in row):
+        raise TypeError("m_a should contain only integers or floats and m_b should contain only integers or floats")
 
-    if any(len(row) != num_columns_a for row in m_a) or any(len(row) != num_rows_b for row in m_b):
-        raise ValueError("Matrices must be of compatible sizes for multiplication")
+    if any(len(row) != len(m_a[0]) for row in m_a) or any(len(row) != len(m_b[0]) for row in m_b):
+        raise ValueError("Each row of m_a must be of the same size and each row of m_b must be of the same size")
+
+    if len(m_a[0]) != len(m_b):
+        raise ValueError("m_a and m_b can't be multiplied")
 
     result = [[0 for _ in range(len(m_b[0]))] for _ in range(len(m_a))]
 
