@@ -1,14 +1,19 @@
-#!/usr/bin/python3
-""" 14-main """
-from models.base import Base
-from models.rectangle import Rectangle
+# Define the dictionary
+my_dict = {'x': 2, 'width': 10, 'id': 1, 'height': 7, 'y': 8}
 
-if __name__ == "__main__":
+# Print the dictionary and its type
+print(my_dict)
+print(type(my_dict))
 
-    r1 = Rectangle(8, 7, 2, 10)
-    dictionary = r1.to_dictionary()
-    json_dictionary = Base.to_json_string([dictionary])
-    print(dictionary)
-    print(type(dictionary))
-    print(json_dictionary)
-    print(type(json_dictionary))
+# Convert the dictionary to a list with a single element and print it
+my_list = [my_dict]
+print(my_list)
+print(type(my_list))
+
+# Convert the list to a JSON string
+import json
+my_json = json.dumps(my_list)
+
+# Write the JSON string to a file
+with open('14-main.py', 'w') as file:
+    file.write(my_json)
