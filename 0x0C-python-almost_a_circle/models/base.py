@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #!/usr/bin/python3
 """Defines Base class"""
 import json
@@ -128,3 +129,5 @@ class Base:
             pen.right(90)
 
         window.exitonclick()
+=======
+>>>>>>> 58280f1d365da9fd7620fb0e39663d52dd17b391
